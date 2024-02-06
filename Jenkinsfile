@@ -18,7 +18,7 @@ pipeline {
 
         stage('For PR') {
             when {
-                branch 'feature/*'
+                branch 'PR-*'
             }
             steps {
                 echo 'Echo Unit testing'
