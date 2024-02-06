@@ -21,7 +21,8 @@ pipeline {
                 branch 'PR-*'
             }
             steps {
-                echo 'Echo Unit testing'
+                echo 'Echo PR test'
+                sh 'sleep 200'
             }
         }
 
