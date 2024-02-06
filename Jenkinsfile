@@ -17,6 +17,9 @@ pipeline {
         }
 
         stage('For PR') {
+            when {
+                branch 'feature/*'
+            }
             steps {
                 echo 'Echo Unit testing'
             }
