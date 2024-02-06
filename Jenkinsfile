@@ -23,6 +23,7 @@ pipeline {
             steps {
                 echo 'Echo PR test'
                 sh 'sleep 200'
+                publishChecks conclusion: 'CANCELED', name: 'PR-testing', title: 'PR-testing'
             }
         }
 
