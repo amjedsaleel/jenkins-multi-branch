@@ -5,29 +5,26 @@ pipeline {
         stage('Unit testing') {
             steps {
                 echo 'Echo Unit testing'
-                sh 'sh sleep 10'
+                sh 'sleep 10'
             }
         }
-    }
 
-    stages {
         stage('Sonarqube analysis') {
             steps {
                 echo 'Sonarqube analysis'
                 sh 'sleep 5'
             }
         }
-    }
 
-    stages {
         stage('For PR') {
+            when {
+                branch 'feature/*'
+            }
             steps {
                 echo 'Echo Unit testing'
             }
         }
-    }        
 
-    stages {
         stage('Deploy to dev') {
             when {
                 branch 'dev'
@@ -36,10 +33,8 @@ pipeline {
                 echo 'Deploying to dev'
                 sh 'sleep 14'
             }
-        }
-    }
+        }  
 
-    stages {
         stage('Deploy to staging') {
             when {
                 branch 'staging'
@@ -49,9 +44,7 @@ pipeline {
                 sh 'sleep 14'
             }
         }
-    } 
 
-    stages {
         stage('Deploy to production') {
             when {
                 branch 'production'
@@ -60,6 +53,6 @@ pipeline {
                 echo 'deploying to production'
                 sh 'sleep 14'
             }
-        }
-    }        
+        }                      
+    }
 }
